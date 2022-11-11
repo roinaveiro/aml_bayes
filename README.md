@@ -4,7 +4,9 @@ This repository contains code for reproducing the experiments in the **Adversari
 
 ## Protecting during operations
 
-The `operations` folder contains the code corresponding to the ML robustification approach during operations. The main files are the following:
+The environment containing all relevant libraries for this batch of experiments is `acra2.yml`.
+The `operations` folder contains the code corresponding to the ML robustification approach during operations. 
+The main files are the following:
 
 * `data.py`:  contains functions to load different data sets and a function to generate train and test sets.
 
