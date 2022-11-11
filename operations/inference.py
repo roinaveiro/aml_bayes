@@ -13,11 +13,10 @@ with warnings.catch_warnings():
     warnings.filterwarnings("ignore",category=DeprecationWarning)
 
 
+
 '''
 Inference functions for the ARA approach to Adversarial Classification
 '''
-
-
 def predict_unaware(x_mod, ut, clf):
     '''
     Prediction using adversary unaware classifier
@@ -51,8 +50,8 @@ def parallel_predict_aware(X_test, sampler, params):
     def predict_aware_par(i, X_test, sampler, params):
         return predict_aware(X_test[i], sampler, params)
     ##
-    num_cores=24 # it depends of the processor
-    preds = Parallel(n_jobs=-1)(delayed(predict_aware_par)(i, X_test, sampler, params) for i in range(X_test.shape[0]))
+    num_cores = 50 # it depends of the processor
+    preds = Parallel(n_jobs=num_cores)(delayed(predict_aware_par)(i, X_test, sampler, params) for i in range(X_test.shape[0]))
     return np.array(preds)
 
 
@@ -107,12 +106,3 @@ if __name__ == '__main__':
     print('Adversary Aware Accuracy Attacked Data', accuracy_score(y_test, pr) )
 
 
-    # Predict for more instances
-    #n_samples=10
-    #rho=2
-    #rows = 30 # predict for 10 samples
-    # rows = X.shape[0] # predict for all samples
-    # num_cores=4 # it depends of the processor
-    # print("Vector with label predictions: ", vector_labels)
-    #def predict_heuristic_par(i,X,ut,clf,n_samples,rho,heuristic):
-    #    return predict_heuristic(X[i], ut, clf, n_samples, rho, heuristic='uniform')

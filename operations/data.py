@@ -38,8 +38,17 @@ def get_sentiment_data(path):
     return dataset and labels
     '''
     data = pd.read_csv(path)
+    data.label[data.label == 0] = 2
+    data.label[data.label == 1] = 0
+    data.label[data.label == 2] = 1
+    
+    print("Number of bads in sentiment bad")
+    print( np.sum(data["bad"][data.label == 1]) )
+    print("Number of bads in sentiment good")
+    print( np.sum(data["bad"][data.label == 0]) )
+
     X = data.drop("label", axis=1).values
-    y = data.labels.values
+    y = data.label.values
     return X,y
 
 

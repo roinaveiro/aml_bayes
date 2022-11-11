@@ -1,0 +1,14 @@
+#!/bin/bash
+#$ -q teano
+#$ -pe smp 50
+#$ -j yes
+#$ -cwd
+
+
+# Load anaconda malware environment
+conda activate acra2
+# Run the executable
+python -u experiment_noCK.py > noCK_high_NEW.out
+
+# Deactivate anaconda environment
+conda deactivate

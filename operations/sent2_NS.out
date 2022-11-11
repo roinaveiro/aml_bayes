@@ -1,0 +1,314 @@
+Number of bads in sentiment bad
+68
+Number of bads in sentiment good
+3
+Experiment:  0
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.5416666666666666
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.575
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.5875
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.6229166666666667
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.6229166666666667
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.6666666666666666
+rfaccuracy on clean data 0.7541666666666667
+rfaccuracy on tainted data 0.3541666666666667
+rfACRA accuracy on tainted data var 0.1 0.6729166666666667
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.754167     0.354167      0.541667
+1          5       0.754167     0.354167      0.575000
+2         10       0.754167     0.354167      0.587500
+3         20       0.754167     0.354167      0.622917
+4         50       0.754167     0.354167      0.622917
+5        100       0.754167     0.354167      0.666667
+6        150       0.754167     0.354167      0.672917
+Writing Experiment  0
+Experiment:  1
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.5416666666666666
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.5729166666666666
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.5979166666666667
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.6416666666666667
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.64375
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.6333333333333333
+rfaccuracy on clean data 0.7083333333333334
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.6708333333333333
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.708333        0.325      0.541667
+1          5       0.708333        0.325      0.572917
+2         10       0.708333        0.325      0.597917
+3         20       0.708333        0.325      0.641667
+4         50       0.708333        0.325      0.643750
+5        100       0.708333        0.325      0.633333
+6        150       0.708333        0.325      0.670833
+Writing Experiment  1
+Experiment:  2
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.5729166666666666
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.5958333333333333
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.6208333333333333
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.60625
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.6354166666666666
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.6958333333333333
+rfaccuracy on clean data 0.7291666666666666
+rfaccuracy on tainted data 0.3020833333333333
+rfACRA accuracy on tainted data var 0.1 0.7145833333333333
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.729167     0.302083      0.572917
+1          5       0.729167     0.302083      0.595833
+2         10       0.729167     0.302083      0.620833
+3         20       0.729167     0.302083      0.606250
+4         50       0.729167     0.302083      0.635417
+5        100       0.729167     0.302083      0.695833
+6        150       0.729167     0.302083      0.714583
+Writing Experiment  2
+Experiment:  3
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.5395833333333333
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.65
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.6166666666666667
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.6583333333333333
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.71875
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.7083333333333334
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.325
+rfACRA accuracy on tainted data var 0.1 0.7083333333333334
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.714583        0.325      0.539583
+1          5       0.714583        0.325      0.650000
+2         10       0.714583        0.325      0.616667
+3         20       0.714583        0.325      0.658333
+4         50       0.714583        0.325      0.718750
+5        100       0.714583        0.325      0.708333
+6        150       0.714583        0.325      0.708333
+Writing Experiment  3
+Experiment:  4
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.51875
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.5875
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.6
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.6354166666666666
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.66875
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.6729166666666667
+rfaccuracy on clean data 0.6916666666666667
+rfaccuracy on tainted data 0.3229166666666667
+rfACRA accuracy on tainted data var 0.1 0.6916666666666667
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.691667     0.322917      0.518750
+1          5       0.691667     0.322917      0.587500
+2         10       0.691667     0.322917      0.600000
+3         20       0.691667     0.322917      0.635417
+4         50       0.691667     0.322917      0.668750
+5        100       0.691667     0.322917      0.672917
+6        150       0.691667     0.322917      0.691667
+Writing Experiment  4
+Experiment:  5
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.5229166666666667
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.5854166666666667
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.5895833333333333
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.61875
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.6604166666666667
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.6708333333333333
+rfaccuracy on clean data 0.7145833333333333
+rfaccuracy on tainted data 0.33541666666666664
+rfACRA accuracy on tainted data var 0.1 0.6666666666666666
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.714583     0.335417      0.522917
+1          5       0.714583     0.335417      0.585417
+2         10       0.714583     0.335417      0.589583
+3         20       0.714583     0.335417      0.618750
+4         50       0.714583     0.335417      0.660417
+5        100       0.714583     0.335417      0.670833
+6        150       0.714583     0.335417      0.666667
+Writing Experiment  5
+Experiment:  6
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5125
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5854166666666667
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5666666666666667
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5833333333333334
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5833333333333334
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.63125
+rfaccuracy on clean data 0.6979166666666666
+rfaccuracy on tainted data 0.31875
+rfACRA accuracy on tainted data var 0.1 0.5791666666666667
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.697917      0.31875      0.512500
+1          5       0.697917      0.31875      0.585417
+2         10       0.697917      0.31875      0.566667
+3         20       0.697917      0.31875      0.583333
+4         50       0.697917      0.31875      0.583333
+5        100       0.697917      0.31875      0.631250
+6        150       0.697917      0.31875      0.579167
+Writing Experiment  6
+Experiment:  7
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.55
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.5708333333333333
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.6083333333333333
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.60625
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.6125
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.6666666666666666
+rfaccuracy on clean data 0.6958333333333333
+rfaccuracy on tainted data 0.29791666666666666
+rfACRA accuracy on tainted data var 0.1 0.66875
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.695833     0.297917      0.550000
+1          5       0.695833     0.297917      0.570833
+2         10       0.695833     0.297917      0.608333
+3         20       0.695833     0.297917      0.606250
+4         50       0.695833     0.297917      0.612500
+5        100       0.695833     0.297917      0.666667
+6        150       0.695833     0.297917      0.668750
+Writing Experiment  7
+Experiment:  8
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5666666666666667
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.55625
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5625
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5645833333333333
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5541666666666667
+rfaccuracy on clean data 0.7354166666666667
+rfaccuracy on tainted data 0.32708333333333334
+rfACRA accuracy on tainted data var 0.1 0.5604166666666667
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.735417     0.327083      0.500000
+1          5       0.735417     0.327083      0.566667
+2         10       0.735417     0.327083      0.556250
+3         20       0.735417     0.327083      0.562500
+4         50       0.735417     0.327083      0.564583
+5        100       0.735417     0.327083      0.554167
+6        150       0.735417     0.327083      0.560417
+Writing Experiment  8
+Experiment:  9
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.525
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.55625
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.6
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.5895833333333333
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.6479166666666667
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.6354166666666666
+rfaccuracy on clean data 0.7208333333333333
+rfaccuracy on tainted data 0.33958333333333335
+rfACRA accuracy on tainted data var 0.1 0.61875
+   n_samples  acc_raw_clean  acc_raw_att  acc_acra_att
+0          1       0.720833     0.339583      0.525000
+1          5       0.720833     0.339583      0.556250
+2         10       0.720833     0.339583      0.600000
+3         20       0.720833     0.339583      0.589583
+4         50       0.720833     0.339583      0.647917
+5        100       0.720833     0.339583      0.635417
+6        150       0.720833     0.339583      0.618750
+Writing Experiment  9

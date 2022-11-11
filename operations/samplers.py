@@ -25,6 +25,8 @@ def sample_original_instance(x_mod, n_samples, params):
         ##
         if params["stop"]:
             for j in range(params["max_iter"]):
+                #if (j+1)%100 == 0:
+                #    print(j)
                 x = sample_instance(X_train)[0] ## Watch out! Dimensions
                 probs = sample_label(x, clf)[0]
                 y = np.random.choice(params["classes"], p=probs)

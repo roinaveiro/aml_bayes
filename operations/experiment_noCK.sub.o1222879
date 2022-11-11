@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "experiment_noCK.py", line 16, in <module>
+    os.mkdir(dir_name)
+FileExistsError: [Errno 17] File exists: 'results/sentiment_2/exp_classifiers_noCK_2_NEW/'

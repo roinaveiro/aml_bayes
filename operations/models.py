@@ -1,7 +1,8 @@
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.inspection import permutation_importance
@@ -26,8 +27,19 @@ def get_top_featues(X, y, clf):
 
 def train_clf(X_train, y_train, n_cov, flag='lr'):
 
+    # if flag == 'lr':
+    #     clf = LogisticRegression(penalty='l1', C=0.7, solver='saga')
+    #     clf.fit(X_train, y_train)
+    #     weights = np.abs(clf.coef_)
+    #     S = []
+    #     for w in weights:
+    #         S.append( (-w).argsort()[:n_cov] )
+    #     S = np.concatenate( S, axis=0 )
+    #     S = np.unique( S )
+    #     return clf, S
+
     if flag == 'lr':
-        clf = LogisticRegression(penalty='l1', C=0.1, solver='saga')
+        clf = LogisticRegression()
         clf.fit(X_train, y_train)
         weights = np.abs(clf.coef_)
         S = []
@@ -46,15 +58,15 @@ def train_clf(X_train, y_train, n_cov, flag='lr'):
     #     return clf, S
 
     if flag == 'rf':
-        clf = RandomForestClassifier()
+        clf = RandomForestClassifier(max_depth=5, n_estimators=200)
         clf.fit(X_train,y_train)
         sorted_idx = get_top_featues(X_train, y_train, clf=clf)
         S = sorted_idx[:n_cov]
         return clf, S
 
     if flag == 'nn':
-        clf = MLPClassifier(solver='lbfgs', alpha=1e-5,
-                     hidden_layer_sizes=(3, 2), random_state=1)
+        clf = MLPClassifier(solver='lbfgs', learning_rate='invscaling',
+                     hidden_layer_sizes=(3, 2), max_iter=1500)
         clf.fit(X_train,y_train)
         sorted_idx = get_top_featues(X_train, y_train, clf=clf)
         S = sorted_idx[:n_cov]
@@ -70,6 +82,20 @@ def train_clf(X_train, y_train, n_cov, flag='lr'):
     if flag == 'nb':
         clf = BernoulliNB(alpha=1.0e-10)
         clf.fit(X_train, y_train)
+        sorted_idx = get_top_featues(X_train, y_train, clf=clf)
+        S = sorted_idx[:n_cov]
+        return clf, S
+
+    if flag == 'adaboost':
+        clf = AdaBoostClassifier()
+        clf.fit(X_train,y_train)
+        sorted_idx = get_top_featues(X_train, y_train, clf=clf)
+        S = sorted_idx[:n_cov]
+        return clf, S
+
+    if flag == 'gb':
+        clf = GradientBoostingClassifier()
+        clf.fit(X_train,y_train)
         sorted_idx = get_top_featues(X_train, y_train, clf=clf)
         S = sorted_idx[:n_cov]
         return clf, S

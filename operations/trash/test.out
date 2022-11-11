@@ -1,0 +1,44 @@
+Experiment:  0
+Classifier nb
+nbaccuracy on clean data 0.7333333333333333
+nbaccuracy on tainted data 0.18666666666666668
+nbACRA accuracy on tainted data var0 0.38666666666666666
+nbACRA accuracy on tainted data var0.5 0.44
+Classifier lr
+lraccuracy on clean data 0.68
+lraccuracy on tainted data 0.04
+lrACRA accuracy on tainted data var0 0.21333333333333335
+lrACRA accuracy on tainted data var0.5 0.14666666666666667
+Classifier rf
+rfaccuracy on clean data 0.6933333333333334
+rfaccuracy on tainted data 0.26666666666666666
+rfACRA accuracy on tainted data var0 0.7866666666666666
+rfACRA accuracy on tainted data var0.5 0.7333333333333333
+Classifier nn
+nnaccuracy on clean data 0.6666666666666666
+nnaccuracy on tainted data 0.05333333333333334
+nnACRA accuracy on tainted data var0 0.44
+nnACRA accuracy on tainted data var0.5 0.32
+Writing Experiment  0
+Experiment:  1
+Classifier nb
+nbaccuracy on clean data 0.6666666666666666
+nbaccuracy on tainted data 0.24
+nbACRA accuracy on tainted data var0 0.5333333333333333
+nbACRA accuracy on tainted data var0.5 0.7333333333333333
+Classifier lr
+lraccuracy on clean data 0.5733333333333334
+lraccuracy on tainted data 0.05333333333333334
+lrACRA accuracy on tainted data var0 0.29333333333333333
+lrACRA accuracy on tainted data var0.5 0.18666666666666668
+Classifier rf
+rfaccuracy on clean data 0.7066666666666667
+rfaccuracy on tainted data 0.36
+rfACRA accuracy on tainted data var0 0.84
+rfACRA accuracy on tainted data var0.5 0.8666666666666667
+Classifier nn
+nnaccuracy on clean data 0.64
+nnaccuracy on tainted data 0.3333333333333333
+nnACRA accuracy on tainted data var0 0.6533333333333333
+nnACRA accuracy on tainted data var0.5 0.6933333333333334
+Writing Experiment  1
