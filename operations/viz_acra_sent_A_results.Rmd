@@ -1,0 +1,161 @@
+---
+title: "ACRA Sentiment - Results - Attacker A"
+output:
+  html_document:
+    df_print: paged
+date: '2022-10-10'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+source("utils.R")
+```
+
+
+## Experiment Multiple Classifiers
+
+Table 1 - A
+
+```{r warning=F}
+dname <- "results/sentiment_A/exp_classifiers/"
+mult_classifiers <- get_data(dname)
+
+class <- mult_classifiers %>% filter(classifier != "svm") %>% group_by(classifier, var) %>% 
+  summarise(`Mean Accuracy Clean Data` = mean(acc_raw_clean),
+            `Std. Dev. Accuracy Clean Data` = sd(acc_raw_clean)/sqrt(10),
+            `Mean Accuracy Tainted Data` = mean(acc_raw_att),
+            `Std. Dev. Accuracy Tainted Data` = sd(acc_raw_att)/sqrt(10),
+            `Mean Accuracy ACRA Tainted Data` = mean(acc_acra_att),
+            `Std. Dev. Accuracy ACRA Tainted Data` = sd(acc_acra_att)/sqrt(10)) 
+
+tex_out <- class %>% 
+  mutate(
+    classifier = case_when(classifier == "lr" ~ "Logistic Regression",
+                           classifier == "nb" ~ "Naive Bayes",
+                           classifier == "nn" ~ "Neural Network",
+                           T ~ "Random Forest"),
+    `Clean data` = paste("$", as.character(round(`Mean Accuracy Clean Data`,3)), "\\pm", round(`Std. Dev. Accuracy Clean Data`, 3), "$"),
+    `Attacked data` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$")
+    ) %>%
+  select(classifier, `Clean data`, `Attacked data` ) %>% 
+  kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
+```
+
+Table 2
+
+```{r warning=F}
+tex_out <- class %>% 
+  mutate(
+    classifier = case_when(classifier == "lr" ~ "Logistic Regression",
+                           classifier == "nb" ~ "Naive Bayes",
+                           classifier == "nn" ~ "Neural Network",
+                           T ~ "Random Forest"),
+    `Clean data (Raw)` = paste("$", as.character(round(`Mean Accuracy Clean Data`,3)), "\\pm", round(`Std. Dev. Accuracy Clean Data`, 3), "$"),
+    `Attacked data (Raw)` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$"),
+      `Attacked data (AB-ACRA)` = paste("$", as.character(round(`Mean Accuracy ACRA Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy ACRA Tainted Data`, 3), "$")
+    ) %>%
+  select(classifier, `Clean data (Raw)`, `Attacked data (Raw)`, `Attacked data (AB-ACRA)`)  %>% 
+  kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
+```
+
+## Experiment Tolerance
+
+```{r warning=F}
+dname <- "results/sentiment_A/exp_tolerance/"
+tol_exp <- get_data(dname)
+
+tol_exp %>% pivot_longer(c(acc_raw_clean, acc_raw_att, acc_acra_att),
+                         names_to = "Algorithm") %>% 
+  mutate(Algorithm = case_when(Algorithm == "acc_raw_clean" ~ "Raw Clean Data",
+                           Algorithm == "acc_raw_att" ~ "Raw Attacked Data",
+                           Algorithm == "acc_acra_att" ~ "ACRA Attacked Data",
+                           TRUE ~ "be")) %>% group_by(tolerance, Algorithm) %>% 
+  summarise(mean  = mean(value),
+            lower = mean(value) - 2*sd(value)/sqrt(10),
+            upper = mean(value) + 2*sd(value)/sqrt(10)) %>%
+  ggplot(aes(x = tolerance, y = mean, color=Algorithm, linetype=Algorithm)) + 
+  geom_line(size=0.5) + geom_point() + 
+  geom_errorbar(aes(ymin=lower, ymax=upper), size=0.5,
+                width=0.05,
+                  size=0.1) + theme_minimal() +
+  labs(title    = "Tolerance vs Accuracy",
+       subtitle = "Random Forest, Number of Samples = 20",
+       x = "Tolerance",
+       y = "Accuracy") +
+  theme(axis.text.x=element_text(angle=-90, hjust=0, vjust=1)) +
+  theme(plot.title=element_text(size=15, hjust=0.5, face="bold", vjust=-1)) +
+  theme(plot.subtitle=element_text(size=12, hjust=0.5, vjust=-1)) +
+  theme(text = element_text(size=12)) 
+
+ggsave("img/sent_tolerance.png", device = "png", dpi = 300)
+```
+
+## Experiment number of samples
+
+```{r warning=F}
+dname <- "results/sentiment_A/exp_nsamples/"
+nsamples_exp <- get_data(dname)
+```
+
+```{r warning=F}
+nsamples_exp %>% pivot_longer(c(acc_raw_clean, acc_raw_att, acc_acra_att),
+                         names_to = "Algorithm") %>% 
+  mutate(Algorithm = case_when(Algorithm == "acc_raw_clean" ~ "Raw Clean Data",
+                           Algorithm == "acc_raw_att" ~ "Raw Attacked Data",
+                           Algorithm == "acc_acra_att" ~ "ACRA Attacked Data",
+                           TRUE ~ "be")) %>% group_by(n_samples, Algorithm) %>% 
+  summarise(mean  = mean(value),
+            lower = mean(value) - 2*sd(value)/sqrt(10),
+            upper = mean(value) + 2*sd(value)/sqrt(10)) %>%
+  ggplot(aes(x = n_samples, y = mean, color=Algorithm, linetype=Algorithm)) + 
+  geom_line(size=0.5) + geom_point() + 
+  geom_errorbar(aes(ymin=lower, ymax=upper), size=0.5,
+                position=position_dodge(0.05)) + theme_minimal() +
+  labs(title    = "Number of Samples vs Accuracy",
+       subtitle = "Random Forest. Tolerance = 2.",
+       x = "Number of Samples",
+       y = "Accuracy") +
+  theme(axis.text.x=element_text(angle=-90, hjust=0, vjust=1)) +
+  theme(plot.title=element_text(size=15, hjust=0.5, face="bold", vjust=-1)) +
+  theme(plot.subtitle=element_text(size=12, hjust=0.5, vjust=-1)) +
+  theme(text = element_text(size=12)) 
+
+ggsave("img/sent_nsamples.png", device = "png", dpi = 300)
+```
+
+
+## Experiment Multiple Classifiers - No Common Knowledge
+
+
+Table 4
+
+```{r}
+dname <- "results/sentiment_A/exp_classifiers_noCK_5/"
+no_CK <- get_data(dname)
+
+result_noCK <- no_CK %>% filter(flag != "svm") %>%   mutate (Classifier = flag) %>% group_by(Classifier) %>% 
+  summarise(`Mean Accuracy Clean Data` = mean(acc_raw_clean),
+            `Std. Dev. Accuracy Clean Data` = sd(acc_raw_clean)/sqrt(10),
+            `Mean Accuracy Tainted Data` = mean(acc_raw_att),
+            `Std. Dev. Accuracy Tainted Data` = sd(acc_raw_att)/sqrt(10),
+            `Mean Accuracy CK Tainted Data` = mean(acc_acra_att_low_var),
+            `Std. Dev. Accuracy CK Tainted Data` = sd(acc_acra_att_low_var)/sqrt(10),
+            `Mean Accuracy ACRA Tainted Data` = mean(acc_acra_att_high_var),
+            `Std. Dev. Accuracy ACRA Tainted Data` = sd(acc_acra_att_high_var)/sqrt(10))
+
+
+tex_out <- result_noCK %>% 
+  mutate(
+    Classifier = case_when(Classifier == "lr" ~ "Logistic Regression",
+                           Classifier == "nb" ~ "Naive Bayes",
+                           Classifier == "nn" ~ "Neural Network",
+                           T ~ "Random Forest"),
+    `Attacked data (Raw)` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$"),
+    `Attacked data (CK)` = paste("$", as.character(round(`Mean Accuracy CK Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy CK Tainted Data`, 3), "$"),
+      `Attacked data (AB-ACRA)` = paste("$", as.character(round(`Mean Accuracy ACRA Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy ACRA Tainted Data`, 3), "$")
+    ) %>%
+  select(Classifier, `Attacked data (Raw)`, `Attacked data (CK)`, `Attacked data (AB-ACRA)`)  %>% 
+  kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
+```

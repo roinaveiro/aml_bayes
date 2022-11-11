@@ -26,6 +26,7 @@ if __name__ == '__main__':
 
 
     #X, y = get_sentiment_data("data/clean_imdb_sent.csv")
+    #X, y = get_spam_data(path)
     X, y = get_sentiment_data("data/clean_imdb_sent_2.csv")
 
 
