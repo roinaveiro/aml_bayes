@@ -36,4 +36,14 @@ be specified modifyng the line in which X and y are defined. For instance, to lo
 
 ## Protecting during training
 
-The `training` folder contains the code corresponding to the ML robustification approach during training
+The `training` folder contains the code corresponding to the ML robustification approach during training. The main dependency is the PyTorch library to define and train the different neural architectures. The main scripts are the following:
+
+* `models.py`: defines several network architectures in Pytorch, ready to be used with the experiments. Those are a Multi-Layered Perceptron (MLP), a simple Convolutional Network, and a ResNet.
+
+* `optimizers.py`: implements the optimizers and attack routines (fast gradient sign method, with aditional multiple steps, PGD).
+
+* `utils_train.py`: defines the dataloaders, several functions to train with the different robustification approaches, and evaluation functions.
+
+* `adversarial_examples_AT.ipynb`: the notebook used to run the experiments and plot the graphs from the paper.
+
+
