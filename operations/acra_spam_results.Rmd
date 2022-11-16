@@ -1,0 +1,78 @@
+---
+title: "ACRA Spam - Results for paper: Adversarial Machine Learning: Bayesian perspectives"
+output:
+  html_document:
+    df_print: paged
+date: '2022-10-10'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+source("utils.R")
+```
+
+
+## Experiment Multiple Classifiers
+
+Table 1
+
+```{r warning=F}
+dname <- "results/spam/multiple_classifiers/"
+mult_classifiers <- get_data(dname)
+
+class <- mult_classifiers %>% group_by(flag) %>% 
+  summarise(`Mean Accuracy Clean Data` = mean(acc_raw_clean),
+            `Std. Dev. Accuracy Clean Data` = sd(acc_raw_clean)/sqrt(10),
+            `Mean Accuracy Tainted Data` = mean(acc_raw_att),
+            `Std. Dev. Accuracy Tainted Data` = sd(acc_raw_att)/sqrt(10),
+            `Mean Accuracy ACRA Tainted Data` = mean(acc_acra_att),
+            `Std. Dev. Accuracy ACRA Tainted Data` = sd(acc_acra_att)/sqrt(10)) 
+
+tex_out <- class %>% 
+  mutate(
+    classifier = case_when(classifier == "lr" ~ "Logistic Regression",
+                           classifier == "nb" ~ "Naive Bayes",
+                           classifier == "nn" ~ "Neural Network",
+                           T ~ "Random Forest"),
+    `Clean data` = paste("$", as.character(round(`Mean Accuracy Clean Data`,3)), "\\pm", round(`Std. Dev. Accuracy Clean Data`, 3), "$"),
+    `Attacked data` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$")
+    ) %>%
+  select(classifier, `Clean data`, `Attacked data` ) %>% 
+  kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
+```
+
+Table 2
+
+```{r warning=F}
+dname <- "results/spam/high_low_var_all/"
+no_CK <- get_data(dname)
+
+result_noCK <- no_CK %>% mutate (Classifier = flag) %>% group_by(Classifier) %>% 
+  summarise(`Mean Accuracy Clean Data` = mean(acc_raw_clean),
+            `Std. Dev. Accuracy Clean Data` = sd(acc_raw_clean)/sqrt(10),
+            `Mean Accuracy Tainted Data` = mean(acc_raw_att),
+            `Std. Dev. Accuracy Tainted Data` = sd(acc_raw_att)/sqrt(10),
+            `Mean Accuracy CK Tainted Data` = mean(acc_acra_att_low_var),
+            `Std. Dev. Accuracy CK Tainted Data` = sd(acc_acra_att_low_var)/sqrt(10),
+            `Mean Accuracy ACRA Tainted Data` = mean(acc_acra_att_high_var),
+            `Std. Dev. Accuracy ACRA Tainted Data` = sd(acc_acra_att_high_var)/sqrt(10))
+
+
+tex_out <- result_noCK %>% 
+  mutate(
+    Classifier = case_when(Classifier == "lr" ~ "Logistic Regression",
+                           Classifier == "nb" ~ "Naive Bayes",
+                           Classifier == "nn" ~ "Neural Network",
+                           T ~ "Random Forest"),
+    `Attacked data (Raw)` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,4)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 4), "$"),
+    `Attacked data (CK)` = paste("$", as.character(round(`Mean Accuracy CK Tainted Data`,4)), "\\pm", round(`Std. Dev. Accuracy CK Tainted Data`, 4), "$"),
+      `Attacked data (AB-ACRA)` = paste("$", as.character(round(`Mean Accuracy ACRA Tainted Data`,4)), "\\pm", round(`Std. Dev. Accuracy ACRA Tainted Data`, 4), "$")
+    ) %>%
+  select(Classifier, `Attacked data (Raw)`, `Attacked data (CK)`, `Attacked data (AB-ACRA)`)  %>% 
+  kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
+```
+
+```
+

@@ -20,18 +20,39 @@ The main files are the following:
 
 * `utils.py`: contains some auxiliar functions.
 
-To reproduce the experiments in the papers, the next functions can be used. Note that the dataset used must
-be specified modifyng the line in which X and y are defined. For instance, to load the spam dataset, write
-`X, y = get_spam_data("data/clean_imdb_sent_2.csv")`:
+### Reproducibility Workflow
 
-* `experiments_classifier.py`: to compare performance of different classifiers on tainted data, with and without protection.
+Follow the next steps to reproduce the results in Tables 1 and 2 of the paper:
 
-* `experiments_noCK.py`: to compare common knowledge protection versus the proposed Bayesian protection under different baseline classifiers.
+1. Install the environment containing all dependencies
 
-* `experiments_nsamples.py`: to study how different number of samples to approximate posterior predictive utilities affect performance.
+`conda env create -f acra2.yml`
+
+2. Activate environment
+
+`conda activate acra2`
+
+3. Run 
+
+`python experiments_classifier.py`
+
+This creates the results needed to compare performance of different classifiers on tainted data, with and without protection (Table 1, first 4 columns).
+Results are stored in `results/spam/multiple_classifiers`
+
+3. Run 
+
+`python experiments_noCK.py`
+
+This creates the results needed to comparecommon knowledge protection versus the proposed Bayesian protection under different baseline classifiers. (Table 2).
+Results are stored in `results/spam/high_low_var_all/`
+
+4. The `acra_spam_results.Rmd` R Markdown can be executed to process the generated results and exactly reproduce Tables 1 and 2.
+
+The following files can be used to generate additional results (not present in the paper):
+
+* `experiments_nsamples.py`: to study how different number of samples used in the MC approximation of the robbust adversarial posterior predictive utilities affect performance.
 
 * `experiments_tolerance.py`: to study how the tolerance parameter in ABC affects performance.
-
 
 
 ## Protecting during training

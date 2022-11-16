@@ -12,18 +12,18 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
 
-    dir_name = "results/sentiment_2/exp_classifiers_noCK_2_NEW/"
+    dir_name = "results/spam/high_low_var_all/"
     os.mkdir(dir_name)
 
     n_exp = 10
     n_samples = 40
     tolerance = 1
     n_cov = 11
-    var_high = 0.3
-    flag_grid = ['nn', 'gb', 'rf', 'adaboost'] 
+    var_high = 0.5
+    flag_grid = ['nn', 'nb', 'rf', 'lr'] 
 
-    # X, y = get_sentiment_data("data/clean_imdb_sent.csv")
-    X, y = get_sentiment_data("data/clean_imdb_sent_2.csv")
+    X, y = get_sentiment_data("data/clean_imdb_sent.csv")
+    # X, y = get_sentiment_data("data/clean_imdb_sent_2.csv")
 
     for i in range(n_exp):
 
@@ -64,8 +64,8 @@ if __name__ == '__main__':
                         "X_train"   : X_train,
                         "distance_to_original" : 2, # Numbers of changes allowed to adversary
                         "stop" : True, # Stopping condition for ABC
-                        "max_iter": 300, ## max iterations for ABC when stop=True
-                        "dev": 0.3
+                        "max_iter": 500, ## max iterations for ABC when stop=True
+                        "dev": 0.5
                     }
 
 
