@@ -61,3 +61,18 @@ The `training` folder contains the code corresponding to the ML robustification 
 * `adversarial_examples_AT.ipynb`: the notebook used to run the experiments and plot the graphs from the paper.
 
 
+### Reproducibility Workflow
+
+Follow these steps to reproduce the Figure 2 of our paper:
+
+1. Execute the first part of the notebook `adversarial_examples_AT.ipynb`. The network hyperparameters and architecture are defined there.
+
+2. Execute the following sections (called "Training with ...") of the notebook to train the network with any of the robustification approaches. Those will save the updated weights in different files for each training method.
+
+3. Execute the section "Full atack & defense evaluation" to attack the validation set and evaluate the according previous models over it. The final cell will plot the graph for a configuration of the variables. If you want to try the other dataset, replace `KMNIST` with `FMNIST` and repeat the execution of the notebook.
+
+And follow these steps to reproduce the last column of Table 1:
+
+1. Configure the environment with the Reproducibility workflow from Protecting during operations. Copy the scripts `training/table1/single_exp.py` and `training/table1/models.py` to `operations/`. These will copy the script for the robust training approach of the appropiate models. 
+
+2. Run `python operations/single_exp.py` to perform the experiments. A csv will be created for each experiment, after that you can average results etc.
