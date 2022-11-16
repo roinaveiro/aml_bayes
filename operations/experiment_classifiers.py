@@ -17,15 +17,15 @@ if __name__ == '__main__':
     tolerance = 1
     n_cov = 11
     var_l = 0.1
-    flag_grid = ['nn', 'gb', 'rf', 'adaboost'] 
+    flag_grid = ['nn', 'nb', 'rf', 'lr'] 
 
-    dir_name = "results/sentiment_2/exp_classifiers_more/"
+    dir_name = "results/spam/multiple_classifiers/"
     os.mkdir(dir_name)
     
     q = 0.1 #Percentage for test
 
-    # X, y = get_spam_data("data/uciData.csv")
-    X, y = get_sentiment_data("data/clean_imdb_sent_2.csv")
+    X, y = get_spam_data("data/uciData.csv")
+    # X, y = get_sentiment_data("data/clean_imdb_sent_2.csv")
 
 
     for i in range(n_exp):

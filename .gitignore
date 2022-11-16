@@ -130,3 +130,7 @@ dmypy.json
 
 
 *.sub
+
+*.out
+
+*experiment.sub.*
