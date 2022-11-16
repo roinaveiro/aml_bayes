@@ -25,29 +25,22 @@ The main files are the following:
 Follow the next steps to reproduce the results in Tables 1 and 2 of the paper:
 
 1. Install the environment containing all dependencies
-
 `conda env create -f acra2.yml`
 
 2. Activate environment
-
 `conda activate acra2`
 
 3. Run 
-
 `python experiments_classifier.py`
-
 This creates the results needed to compare performance of different classifiers on tainted data, with and without protection (Table 1, first 4 columns).
 Results are stored in `results/spam/multiple_classifiers`
 
 4. Run 
-
 `python experiments_noCK.py`
-
 This creates the results needed to comparecommon knowledge protection versus the proposed Bayesian protection under different baseline classifiers. (Table 2).
 Results are stored in `results/spam/high_low_var_all/`
 
 5. The `acra_spam_results.Rmd` R Markdown can be executed to process the generated results and exactly reproduce Tables 1 and 2.
-
 The following files can be used to generate additional results (not present in the paper):
 
 * `experiments_nsamples.py`: to study how different number of samples used in the MC approximation of the robbust adversarial posterior predictive utilities affect performance.
