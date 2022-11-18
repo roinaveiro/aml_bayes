@@ -22,7 +22,7 @@ Table 1
 dname <- "results/spam/multiple_classifiers/"
 mult_classifiers <- get_data(dname)
 
-class <- mult_classifiers %>% group_by(flag) %>% 
+class <- mult_classifiers %>% group_by(classifier) %>% 
   summarise(`Mean Accuracy Clean Data` = mean(acc_raw_clean),
             `Std. Dev. Accuracy Clean Data` = sd(acc_raw_clean)/sqrt(10),
             `Mean Accuracy Tainted Data` = mean(acc_raw_att),
@@ -32,14 +32,15 @@ class <- mult_classifiers %>% group_by(flag) %>%
 
 tex_out <- class %>% 
   mutate(
-    classifier = case_when(classifier == "lr" ~ "Logistic Regression",
+    Algorithm = case_when(classifier == "lr" ~ "Logistic Regression",
                            classifier == "nb" ~ "Naive Bayes",
                            classifier == "nn" ~ "Neural Network",
                            T ~ "Random Forest"),
-    `Clean data` = paste("$", as.character(round(`Mean Accuracy Clean Data`,3)), "\\pm", round(`Std. Dev. Accuracy Clean Data`, 3), "$"),
-    `Attacked data` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$")
+    `Untainted` = paste("$", as.character(round(`Mean Accuracy Clean Data`,3)), "\\pm", round(`Std. Dev. Accuracy Clean Data`, 3), "$"),
+    `Tainted` = paste("$", as.character(round(`Mean Accuracy Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy Tainted Data`, 3), "$"),
+    `ARA op.` = paste("$", as.character(round(`Mean Accuracy ACRA Tainted Data`,3)), "\\pm", round(`Std. Dev. Accuracy ACRA Tainted Data`, 3), "$")
     ) %>%
-  select(classifier, `Clean data`, `Attacked data` ) %>% 
+  select(Algorithm, `Untainted`, `Tainted`, `ARA op.`) %>% 
   kbl(caption = "Test", format = "latex", booktabs=T, escape = F) %>% kable_styling(latex_options = c("hold_position"))
 ```
 
